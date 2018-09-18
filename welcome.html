@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Forum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow" style="min-width:220px;">
+          <div class="card-header">
+            <h4><a href="category.php?id='. $row['cat_id'] . '">' . $row['cat_name'] . '</a></h4>
+          </div>
+          <div class="card-body">
+            Welcome
+          </div>
+        </div>
+      </div>
+    </div>
+    
+<div class="feature-center animate-box" data-animate-effect="fadeIn">
+    <a href="#" class="probootstrap-featured-news-box">
+      <figure class="probootstrap-media"><img src="img/bitcoin.jpg" class="img-responsive"></figure>
+      <div class="probootstrap-text">
+        <h3><a href="category.php?id='. $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3>
+        <p>$row['cat_description']</p>
+      </div>
+    </a>
+  </div>
+
+
+  </div>
+
+
+</body>
+
+</html>

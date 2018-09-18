@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Forum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+    <div>
+
+    </div>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(69, 181, 241, 0.753);">
+                <a class="navbar-brand" href="#">ChatForum</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                   <li class="nav-item">
+                        <h4>Welcome, <b> <?php echo htmlspecialchars($_SESSION["username"]); ?></b></h4>	
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="signout.php">Sign Out</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <div class="container-fluid" >
+                    <div class="row" id="body">
+                        <div class="col-4" id="menu">
+                            <div class="list-group" id="list-tab" role="tablist">
+                              <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="index.php" role="tab" aria-controls="home">Home</a>
+                              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="forum.php" role="tab" aria-controls="profile">Forum</a>
+                              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="create_cat.php" role="tab" aria-controls="messages">Create Category</a>
+                              <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="create_topic.php" role="tab" aria-controls="settings">Create Topic</a>
+                            </div>
+                          </div>
+                          <div class="col-8">
+                                echo '<div class="tab-content" id="nav-tabContent">
+                                        <table class="table">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">First</th>
+                                                    <th scope="col">Last</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>';
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                echo'<tr>
+                                                    <th scope="row">1</th>';
+                                                echo '<td>';
+                                                        echo '<h3><a href="category.php?id='. $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
+                                                echo '</td>';
+                                                echo '<td>';
+                                                        echo '<a href="topic.php?id=">Topic subject</a> at 10-10';
+                                                echo '</td>';
+                                                echo '</tr>      
+                                                </tbody>';
+                                            </table>   
+                                </div>
+                          </div>
+                    </div>
+                    </div>
+
+                    //prepare the table
+                    echo '<table border="1">
+                      <tr>
+                        <th>Category</th>
+                        <th>Last topic</th>
+                      </tr>'; 
+                     
+                    while($row = mysqli_fetch_assoc($result))
+                    {  
+                                     
+                    echo '<tr>';
+                        echo '<td class="leftpart">';
+                      
+                            echo '<h3><a href="category.php?id='. $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
+                        echo '</td>';
+                        echo '<td class="rightpart">';
+                                    echo '<a href="topic.php?id=">Topic subject</a> at 10-10';
+                        echo '</td>';
+                    echo '</tr>';
+                    
+                    }
+                    echo '</table>';
+
+                    <div id="footer">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="createtopic.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Library</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Footer</li>
+                          </ol>
+                        </nav>
+                    </div>	
+                </div>
+            </body>
+            </html>
+              
+           
+</body>
+</html>
